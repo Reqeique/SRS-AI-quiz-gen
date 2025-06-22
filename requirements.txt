@@ -1,0 +1,6 @@
+streamlit
+google-generativeai
+requests
+huggingface-hub
+pandas
+matplotlib
