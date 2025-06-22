@@ -4,7 +4,7 @@ emoji: 🧠
 colorFrom: blue
 colorTo: green
 sdk: streamlit
-sdk_version: "1.35.0" # Or your specific streamlit version
+sdk_version: "1.35.0" # 
 app_file: quiz_generator.py
 pinned: false
 ---

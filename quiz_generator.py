@@ -300,9 +300,11 @@ def generate_quiz_html_string(quiz_data, subject, app_url):
 
 def parse_questions_with_gemini(api_key, text, subject):
     try:
-        genai.configure(api_key=api_key); model = genai.GenerativeModel('gemini-1.5-flash')
+        genai.configure(api_key=api_key); model = genai.GenerativeModel('gemini-2.5-flash')
         has_predefined_topics = bool(SUBJECT_TOPICS.get(subject))
-        topic_instruction = f"2. Classify each question into one of the provided topics for '{subject}'. You MUST choose a topic EXACTLY from this list:\n{''.join([f'- \\"{tn}\\"\\n' for tn in SUBJECT_TOPICS[subject]])}" if has_predefined_topics else "2. Assign a relevant 'topic' to each question by inferring a short, descriptive name."
+        topic_instruction = f"2. Classify each question into one of the provided topics for '{subject}'. Assign a relevant 'topic' to each question by inferring a short, descriptive name."
+        
+        
         prompt = f"""
           You are an expert in '{subject}' and an expert quiz parser. Your task is to convert the plain text quiz content below into a valid JSON array of objects.
           For each question in the text, you will create a corresponding JSON object with four keys: "question", "options", "correctAnswer", and "topic".
