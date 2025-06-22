@@ -1,3 +1,13 @@
+---
+title: AI-Powered SRS Quiz Generator
+emoji: 🧠
+colorFrom: blue
+colorTo: green
+sdk: streamlit
+sdk_version: "1.35.0" # Or your specific streamlit version
+app_file: quiz_generator.py
+pinned: false
+---
 # 🧠 AI-Powered SRS Quiz Generator
 
 Instantly transform any text into interactive, shareable quizzes and a personal study deck. This application leverages the power of Google's Gemini AI for intelligent content parsing, Hugging Face Hub for persistent data storage, and Netlify for one-click deployment of your quizzes to the web.
