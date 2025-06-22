@@ -4,13 +4,18 @@ emoji: 🧠
 colorFrom: blue
 colorTo: green
 sdk: streamlit
-sdk_version: "1.35.0" # 
+sdk_version: "1.35.0"
 app_file: quiz_generator.py
 pinned: false
 ---
+
 # 🧠 AI-Powered SRS Quiz Generator
 
 Instantly transform any text into interactive, shareable quizzes and a personal study deck. This application leverages the power of Google's Gemini AI for intelligent content parsing, Hugging Face Hub for persistent data storage, and Netlify for one-click deployment of your quizzes to the web.
+
+**[🚀 Try the Live Demo](https://huggingface.co/spaces/AnaniyaX/SRS-AI-quiz-gen)**
+<br>
+[Deploy to Spaces](https://huggingface.co/spaces/AnaniyaX/SRS-AI-quiz-gen?duplicate=true)
 
 ---
 
@@ -21,58 +26,58 @@ Instantly transform any text into interactive, shareable quizzes and a personal 
 *   **🚀 Automatic Web Deployment**: With a single click, your new quiz is deployed to a persistent, public website on Netlify, complete with a homepage listing all your quizzes.
 *   **🔐 Private & Persistent Storage**: All your quiz data and SRS progress are stored securely and privately in a Hugging Face Dataset under your own account. You own your data.
 *   **🎮 Gamified Learning**: Stay motivated with Experience Points (XP) and a Daily Streak tracker for completing quizzes and review sessions.
-*   **Open & Self-Hosted**: Designed to run on Hugging Face Spaces or locally. Just provide your own API keys, and you're in full control. No data is shared with the app developer.
+*   **Open & Self-Hosted**: Designed to run on Hugging Face Spaces. Just provide your own API keys, and you're in full control.
+
+## 🚀 Getting Started
+
+You have three main options to use this application, from easiest to most advanced:
+
+### Option 1: Try the Live Demo
+
+The quickest way to see the app in action. No setup is required. Note that data created in the public demo may be periodically cleared.
+
+**[➡️ Click here to access the Live Demo](https://huggingface.co/spaces/AnaniyaX/SRS-AI-quiz-gen)**
+
+### Option 2: Duplicate the Space (Recommended)
+
+Create your own private copy of this application on Hugging Face. This is the best way to have your own persistent quiz library.
+
+1.  Click the **[Deploy to Spaces](https://huggingface.co/spaces/AnaniyaX/SRS-AI-quiz-gen?duplicate=true)** button.
+2.  Hugging Face will create a new Space under your account. Choose a name and select "Private" if you wish.
+3.  In your new Space's settings, go to **Settings > Secrets**.
+4.  Add the following as repository secrets:
+    *   `GEMINI_API_KEY`
+    *   `HF_TOKEN` (with `write` permissions)
+    *   `NETLIFY_TOKEN`
+5.  The Space will build, and you can launch the app. It will guide you through entering the remaining configuration (like your desired HF Dataset ID) in the sidebar.
+
+### Option 3: Run Locally 
+Run the application on your own machine for development or offline use.
+
+1.  **Prerequisites**: Ensure you have Python 3.9+ installed.
+2.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/Reqeique/SRS-AI-quiz-gen.git
+    cd SRS-AI-quiz-gen
+    ```
+3.  **Install the dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+4.  **Run the Streamlit app:**
+    ```bash
+    streamlit run quiz_generator.py
+    ```
+5.  **Configure in Sidebar**: Open the app in your browser and enter all the required keys and configuration values in the sidebar.
 
 ## ⚙️ How It Works: The Tech Flow
-
-This application seamlessly integrates several services to create a powerful learning loop:
 
 1.  **Input**: A user pastes raw text into the **Streamlit** interface.
 2.  **AI Parsing**: The text is sent to the **Google Gemini API**, which returns a structured JSON object for the quiz.
 3.  **Persistent Storage**: The new quiz JSON and the user's updated SRS deck (`srs_deck.csv`) are saved to a private **Hugging Face Dataset**.
 4.  **Deployment**: The app generates all necessary HTML files and deploys the entire quiz site to **Netlify** via their API.
 5.  **Interaction**: The user takes the quiz on the public Netlify site.
-6.  **Feedback Loop**: Upon completion, the quiz results (specifically, the mistakes) are encoded and sent back to the original Streamlit app via a URL query parameter.
-7.  **Learning**: The Streamlit app logs the mistakes, adding them as new cards to the user's SRS deck on Hugging Face Hub for future review.
-
-## 🚀 Getting Started
-
-You can run this application locally or deploy it as a Hugging Face Space.
-
-### Prerequisites
-
-You will need the following API keys and credentials:
-
-*   **Google Gemini API Key**: Get one from [Google AI Studio](https://aistudio.google.com/app/apikey).
-*   **Hugging Face User Access Token**: Create a token with `write` permissions in your [HF Account Settings](https://huggingface.co/settings/tokens).
-*   **Netlify Personal Access Token**: Create one in your [Netlify User Settings](https://app.netlify.com/user/applications).
-
-### Running on Hugging Face Spaces (Recommended)
-
-1.  Click the "Deploy on Spaces" button or duplicate this repository to your own Hugging Face account.
-2.  Choose "Streamlit" as the Space SDK.
-3.  In your new Space's settings, go to "Secrets" and add your `GEMINI_API_KEY`, `HF_TOKEN`, and `NETLIFY_TOKEN`. The app will read these automatically.
-4.  Launch the app! It will guide you through entering the remaining configuration (like your desired HF Dataset ID) in the sidebar.
-
-### Running Locally
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/Reqeique/SRS-AI-quiz-gen.git
-    cd SRS-AI-quiz-gen
-    ```
-
-2.  **Install the dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3.  **Run the Streamlit app:**
-    ```bash
-    streamlit run quiz_generator.py
-    ```
-
-4.  **Configure in Sidebar**: Open the app in your browser and enter all the required keys and configuration values in the sidebar.
+6.  **Feedback Loop**: Upon completion, the quiz results (mistakes) are sent back to the Streamlit app to update the SRS deck.
 
 ## 🛠️ Technology Stack
 
